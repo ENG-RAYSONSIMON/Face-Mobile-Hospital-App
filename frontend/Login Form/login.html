@@ -19,37 +19,45 @@
 <div class="row">
 	<div class="col container">
 
-<form class="border border-danger">
+<form id="loginForm" class="border border-danger">
   <div class="form-group form-inline ">
-    <label class="lb" >Username</label>
-    <input type="text" class="form-control"  placeholder="Enter username">
+    <label class="lb" for="apiBaseUrl">API URL</label>
+    <input id="apiBaseUrl" type="text" class="form-control" value="http://localhost:5000/api">
+  </div>
+
+  <div class="form-group form-inline ">
+    <label class="lb" for="username">Username</label>
+    <input id="username" type="text" class="form-control" placeholder="Enter username">
   </div>
 
   <div class="form-group form-inline">
-    <label class="lb">Password</label>
-    <input type="password" class="form-control" placeholder="Password">
-    <small  class="form-text text-muted"> Must be 8-20 characters long.</small>
+    <label class="lb" for="password">Password</label>
+    <input id="password" type="password" class="form-control" placeholder="Password">
+    <small  class="form-text text-muted"> Use seeded users: admin/admin123 or doctor/doctor123.</small>
   </div>
 
   <div class="form-group form-inline ">
-  <label class="lb" >User Type</label>
-    <select class="form-control">
-      <option>enter type</option>
-      <option>Admin</option>
-      <option>Doctor</option>
+  <label class="lb" for="userType">User Type</label>
+    <select id="userType" class="form-control">
+      <option value="">enter type</option>
+      <option value="admin">Admin</option>
+      <option value="doctor">Doctor</option>
   </select>
 </div>
 
   <div class="form-check form-inline">
-    <input type="checkbox" class="form-check-input">
-    <label class="form-check-label">Remember me</label>
+    <input type="checkbox" id="rememberMe" class="form-check-input" checked>
+    <label class="form-check-label" for="rememberMe">Remember me</label>
   </div>
   <button type="submit" class="btn btn-outline btn-danger">Login</button>
+  <p id="statusMessage" class="mt-2"></p>
 </form>
 </div>
 </div>
 	</section>
                   <!-- bootstrap js -->
+<script src="../shared/api-client.js"></script>
+<script src="login.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
