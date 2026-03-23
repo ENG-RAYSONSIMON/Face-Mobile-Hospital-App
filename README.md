@@ -62,6 +62,21 @@ From `schema.sql`:
 
 ## Frontend API consumption
 
-- Open `frontend/Doctor Section/View patient/view patient.html` in a browser.
-- Paste a JWT from `POST /api/auth/login` and click **Load Patients**.
-- The screen calls `GET /api/patients` from the backend and renders the response in the table.
+The static frontend now includes JavaScript integration points with the backend API:
+
+- `frontend/Login Form/login.html`
+  - Calls `POST /api/auth/login`.
+  - Stores JWT + base URL in `localStorage` for other screens.
+- `frontend/Doctor Section/View patient/view patient.html`
+  - Calls `GET /api/patients` and renders API data.
+- `frontend/Doctor Section/Register patient/Register patient.html`
+  - Calls `POST /api/patients` to register a patient.
+- `frontend/Admin Section/view stock/viewstock.html`
+  - Calls `GET /api/stock` and renders medicine stock.
+
+### Quick test flow
+
+1. Start backend (`npm run dev` from `backend/`).
+2. Open `frontend/Login Form/login.html`.
+3. Login with `admin/admin123` or `doctor/doctor123`.
+4. Use redirected screens to load patients/stock or register a patient.

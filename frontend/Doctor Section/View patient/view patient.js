@@ -4,6 +4,9 @@ const apiBaseUrlInput = document.getElementById('apiBaseUrl');
 const apiTokenInput = document.getElementById('apiToken');
 const statusMessage = document.getElementById('statusMessage');
 
+apiBaseUrlInput.value = FaceMobileApi.getApiBaseUrl();
+apiTokenInput.value = FaceMobileApi.getToken();
+
 const renderRows = (patients = []) => {
   if (!patients.length) {
     patientsTableBody.innerHTML = '<tr><td colspan="10">No patients found.</td></tr>';
@@ -35,7 +38,7 @@ const renderRows = (patients = []) => {
 };
 
 const loadPatients = async () => {
-  const apiBaseUrl = apiBaseUrlInput.value.trim().replace(/\/$/, '');
+  const apiBaseUrl = apiBaseUrlInput.value.trim();
   const token = apiTokenInput.value.trim();
 
   if (!token) {
@@ -43,25 +46,17 @@ const loadPatients = async () => {
     return;
   }
 
+  FaceMobileApi.setApiBaseUrl(apiBaseUrl);
+  FaceMobileApi.setToken(token);
   statusMessage.textContent = 'Loading patients from backend API...';
 
   try {
-    const response = await fetch(`${apiBaseUrl}/patients`, {
+    const result = await FaceMobileApi.apiRequest('/patients', {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
     });
 
-    const result = await response.json();
-
-    if (!response.ok || !result.success) {
-      throw new Error(result.message || 'Failed to load patients.');
-    }
-
     renderRows(result.data);
-    statusMessage.textContent = `Loaded ${result.data.length} patient(s) from ${apiBaseUrl}/patients.`;
+    statusMessage.textContent = `Loaded ${result.data.length} patient(s) from ${FaceMobileApi.getApiBaseUrl()}/patients.`;
   } catch (error) {
     statusMessage.textContent = `Error: ${error.message}`;
     renderRows([]);

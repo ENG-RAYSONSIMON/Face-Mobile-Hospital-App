@@ -7,181 +7,119 @@
 	<link rel="stylesheet" type="text/css" href="Register patient.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-	<!-- font awesome my kit link -->
 	<script src="https://kit.fontawesome.com/4a570c9325.js" crossorigin="anonymous"></script>
-
-	<!-- font link -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-	
-
 <div class="row">
     <div class="col-lg-2 col-md-2  col-sm-3 panel" style="background-color:#3843D0;">
     	<img class="logo" src="../../logo/logo.jpg" alt="logo">
-
 <div class="button">
-
 	<a href="Register patient.html" class="btn btn-danger btn-md button active" ><i class="fa-solid fa-user icon" style="color: #00040a;"></i>Register Patient</a>
-
 	<a href="../View patient/view patient.html" class="btn btn-danger btn-md button active" ><i class="fa-solid fa-eye icon" style="color: #01060e;"></i>View Patient</a>
-
 	<a href="../Drug sells/drug sells.html" class="btn btn-danger btn-md button active" ><i class="fa-solid fa-pills icon" style="color: #020812;"></i>Drugs Sells</a>
-
 	<a href="#" class="btn btn-link btn-md button active" >Log out?.....</a>
-
-
 </div>
- 
     </div>
 
     <div class="col-lg-10 col-md-10 col-sm-9">
-
-    	<!-- navigation bar -->
 <nav class="navbar navbar-light justify-content-between" style="background-color: #e3f2fd;">
-  <a class="navbar-brand" id="brand">Patient Details</a>
-  <form class="form-inline">
-
-    <input class="form-control mr-sm-2" type="search" placeholder="Existing Record :Name" >
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-  </form>
+  <a class="navbar-brand" id="brand">Patient Details (API)</a>
 </nav>
 
-                   <!-- table & form -->
-
 <div class="container-fluid elements">
-
-
-                            <!-- first name and last name row -->
-
-<form>
-  <div class="form-row">
-
+  <div class="form-row mb-3">
     <div class="col-lg-6 col-sm-12 form-inline names">
-    	<label>First Name:</label>
-
-      <input type="text" class="form-control" placeholder="first name">
+      <label for="apiBaseUrl">API URL:</label>
+      <input id="apiBaseUrl" type="text" class="form-control" value="http://localhost:5000/api">
     </div>
-
     <div class="col-lg-6 col-sm-12 form-inline names">
-    	    	<label>Last Name:</label>
-
-      <input type="text" class="form-control" placeholder="last name">
+      <label for="apiToken">JWT Token:</label>
+      <input id="apiToken" type="text" class="form-control" placeholder="Paste token from login page">
     </div>
-
   </div>
-</form>
-                            <!-- gender radios and patient age row -->
 
+<form id="patientForm">
+  <div class="form-row">
+    <div class="col-lg-6 col-sm-12 form-inline names">
+    	<label for="firstName">First Name:</label>
+      <input id="firstName" type="text" class="form-control" placeholder="first name" required>
+    </div>
+    <div class="col-lg-6 col-sm-12 form-inline names">
+    	<label for="lastName">Last Name:</label>
+      <input id="lastName" type="text" class="form-control" placeholder="last name" required>
+    </div>
+  </div>
 
 <div class="form-row">
-
-    	 <div class="col form-inline">
-    	 <fieldset class="form-group">
-    <div class="row">
-      <legend class="col-form-label col-sm-2 pt-0">Gender:</legend>
-      <div class="col-sm-10">
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="gridRadios"  value="option1" checked>
-          <label class="form-check-label">
-            Male
-          </label>
-
+  <div class="col form-inline">
+    <fieldset class="form-group">
+      <div class="row">
+        <legend class="col-form-label col-sm-2 pt-0">Gender:</legend>
+        <div class="col-sm-10">
+          <div class="form-check">
+            <input id="genderMale" class="form-check-input" type="radio" name="gender" value="Male" checked>
+            <label class="form-check-label" for="genderMale">Male</label>
+          </div>
+          <div class="form-check">
+            <input id="genderFemale" class="form-check-input" type="radio" name="gender" value="Female">
+            <label class="form-check-label" for="genderFemale">Female</label>
+          </div>
         </div>
-
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="gridRadios"  value="option2">
-          <label class="form-check-label" >
-            Female
-          </label>
-        </div>
-
       </div>
-    </div>
-  </fieldset>
-</div>
+    </fieldset>
+  </div>
 
   <div class="col-lg-6 col-sm-12 form-inline">
-  	<label>Patient Age:</label>
-  	<input type="text" class="form-control" placeholder="In Years">
-  
+  	<label for="age">Patient Age:</label>
+  	<input id="age" type="number" min="0" class="form-control" placeholder="In Years" required>
+  </div>
 </div>
-</div>
-                        <!-- address section -->
 
  <div class="form-group form-inline">
-    <label >Address:</label>
-    <input type="text" class="form-control"  placeholder="@place name">
+    <label for="address">Address:</label>
+    <input id="address" type="text" class="form-control"  placeholder="@place name">
   </div>
-
-                         <!-- patient type and patient id row  -->
-      
-    <div class="row">
-<div class="col-lg-6 form-inline typeID">
-	<label>Patient Type:</label>
-	<select class="form-control">
-      <option>@choose type</option>
-      <option>in patient</option>
-      <option>out patient</option>
-    </select>
-</div>
-<div class="col-lg-6 form-inline typeID">
-	<label>Patient #ID:</label>
-	<input class="form-control" type="text" placeholder="Read only" readonly>
-	
-</div>
-
-    </div>
-
-
-<!-- textarea for diagnosis -->
 
 <div class="row">
-
-<div class="col-lg-4 col-sm-6 form-group">
-    <label>Diagnosis For:</label>
-    <textarea class="form-control textarea" rows="3"></textarea>
+  <div class="col-lg-6 form-inline typeID">
+	<label for="phone">Phone:</label>
+	<input id="phone" class="form-control" type="text" placeholder="Phone number">
   </div>
-
+  <div class="col-lg-6 form-inline typeID">
+	<label for="doctorName">Doctor:</label>
+	<input id="doctorName" class="form-control" type="text" placeholder="Attending doctor">
   </div>
-                       <!-- record button -->
+</div>
+
+<div class="row">
+  <div class="col-lg-8 col-sm-10 form-group">
+    <label for="diagnosis">Diagnosis For:</label>
+    <textarea id="diagnosis" class="form-control textarea" rows="3"></textarea>
+  </div>
+</div>
 
 <div class="record-btn">
-
-<button type="button" class="btn btn-success">Record</button>
+  <button id="recordBtn" type="submit" class="btn btn-success">Record (POST /patients)</button>
+  <p id="statusMessage" class="mt-2"></p>
+</div>
+</form>
 
 </div>
-
 </div>
-
-
-<!-- container divs closed -->
-
-
 </div>
-
-
-  </div>
-
-    </div>
-  </div>
-
 
 <footer id="footer">
-	<a href="https://www.instagram.com/facemobilehealth?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fa-brands fa-instagram fa-2x icon" style="color: #843e6a;">
-			</i></a>
-   <a href="https://chuchu055.kn@gmail.com">
-	 <i class="fa-solid fa-envelope fa-2x icon"></i></a>
-
-	 <a href="https://www.facemhc.co.tz">
-	<i class="fa-duotone fa-w fa-2x icon " style="--fa-primary-color: #00090f;"></i>
-</a>
+	<a href="https://www.instagram.com/facemobilehealth?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fa-brands fa-instagram fa-2x icon" style="color: #843e6a;"></i></a>
+   <a href="https://chuchu055.kn@gmail.com"><i class="fa-solid fa-envelope fa-2x icon"></i></a>
+	 <a href="https://www.facemhc.co.tz"><i class="fa-duotone fa-w fa-2x icon " style="--fa-primary-color: #00090f;"></i></a>
 <p>Face Mobile 2024 POWERED BY Tellam</p>
-
 </footer>
 
+<script src="../../shared/api-client.js"></script>
+<script src="Register patient.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
