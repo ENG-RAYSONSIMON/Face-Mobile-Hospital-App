@@ -2,7 +2,7 @@
 
 This repository now contains:
 
-- **Front-end static web app** (existing HTML/CSS screens under `Face Web App/`)
+- **Front-end static web app** (existing HTML/CSS screens under `frontend/`)
 - **Backend API** built with **Express + MySQL** under `backend/`
 
 ## Backend stack
@@ -59,3 +59,9 @@ From `schema.sql`:
 
 - **admin / admin123**
 - **doctor / doctor123**
+
+## Frontend API consumption
+
+- Open `frontend/Doctor Section/View patient/view patient.html` in a browser.
+- Paste a JWT from `POST /api/auth/login` and click **Load Patients**.
+- The screen calls `GET /api/patients` from the backend and renders the response in the table.

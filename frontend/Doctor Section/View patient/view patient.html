@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>View Patients</title>
+
+	<link rel="stylesheet" type="text/css" href="view patient.css">
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<script src="https://kit.fontawesome.com/4a570c9325.js" crossorigin="anonymous"></script>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="row">
+    <div class="col-lg-2 col-md-2  col-sm-3 panel" style="background-color:#3843D0;">
+    	<img class="logo" src="../../logo/logo.jpg" alt="logo">
+      <div class="button">
+        <a href="../Register patient/Register patient.html" class="btn btn-danger btn-md button active"><i class="fa-solid fa-user icon" style="color: #00040a;"></i>Register Patient</a>
+        <a href="view patient.html" class="btn btn-danger btn-md button active"><i class="fa-solid fa-eye icon" style="color: #01060e;"></i>View Patient</a>
+        <a href="../Drug sells/drug sells.html" class="btn btn-danger btn-md button active"><i class="fa-solid fa-pills icon" style="color: #020812;"></i>Drugs Sells</a>
+        <a href="#" class="btn btn-link btn-md button active">Log out?.....</a>
+      </div>
+    </div>
+
+    <div class="col-lg-10 col-md-10 col-sm-9">
+      <nav class="navbar navbar-light justify-content-between" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" id="brand">Patient Records (API)</a>
+      </nav>
+
+      <div class="api-controls">
+        <label for="apiBaseUrl">API Base URL</label>
+        <input id="apiBaseUrl" class="form-control" type="text" value="http://localhost:5000/api" />
+
+        <label for="apiToken" class="mt-2">JWT Token (required for /patients endpoint)</label>
+        <textarea id="apiToken" class="form-control" rows="2" placeholder="Paste Bearer token from /api/auth/login"></textarea>
+
+        <button id="loadPatientsBtn" type="button" class="btn btn-primary mt-2">Load Patients</button>
+        <p id="statusMessage" class="mt-2"></p>
+      </div>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Diagnosis</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Address</th>
+            <th scope="col">Doctor</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody id="patientsTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+<footer id="footer">
+	<a href="https://www.instagram.com/facemobilehealth?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fa-brands fa-instagram fa-2x icon" style="color: #843e6a;"></i></a>
+   <a href="https://chuchu055.kn@gmail.com"><i class="fa-solid fa-envelope fa-2x icon"></i></a>
+	 <a href="https://www.facemhc.co.tz"><i class="fa-duotone fa-w fa-2x icon" style="--fa-primary-color: #00090f;"></i></a>
+  <p>Face Mobile 2024 POWERED BY Tellam</p>
+</footer>
+
+<script src="view patient.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
